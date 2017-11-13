@@ -1,0 +1,57 @@
+<div class="collapse" id="exCollapsingNavbar">
+  <div class="collapse-bg p-a-1">
+    <div class='card'>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <%= link_to 'Blog', root_path, class: "nav-link #{yield(:blog_active)}" %>
+        </li>
+        <% if current_user %>
+          <li class="list-group-item">
+          <%= link_to 'Admin', rails_admin_path %>
+          </li>
+          <li class="list-group-item">
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class: "nav-link"  %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'New post', new_post_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-light bg-faded">
+  <div class='container'>
+    <a class='navbar-brand' href='/'>
+      BredyBlog
+    </a>
+    <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+      &#9776;
+    </button>
+    <ul class="nav navbar-nav pull-sm-right hidden-xs-down">
+      <li class="nav-item">
+        <%= link_to 'Blog', root_path, class: "nav-link #{yield(:blog_active)}" %>
+      </li>
+      <% if current_user %>
+        <li class="nav-item">
+        <%= link_to 'Admin', rails_admin_path, class: "nav-link"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Login', new_user_session_path, class: "nav-link"  %>
+        </li>
+      <% end %>
+        <li class="nav-item">
+          <%= link_to 'New post', new_post_path, class: "nav-link" %>
+        </li>
+    </ul>
+  </div>
+</nav>
